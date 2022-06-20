@@ -1,6 +1,7 @@
 class Product {
-    constructor(name, price, promotion, discount) {
+    constructor(name, category, price, promotion, discount) {
         this.name = name
+        this.category = category
         this.price = price
         this.promotion = promotion
         this.discount = discount
@@ -8,7 +9,13 @@ class Product {
 }
 
 class Category {
-    constructor(name) {
-        this.name = name
+    constructor(Product) {
+        this.name = Product.category
     }
 }
+
+// class Category {
+//     constructor(name) {
+//         this.name = name
+//     }
+// }
