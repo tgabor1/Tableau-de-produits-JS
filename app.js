@@ -2,23 +2,22 @@
 let prod1 = new Product('MICHAËL GREGORIO', 'Spectacles Rodez', '43,00 €', 'Non', 'Non')
 let prod2 = new Product('DANIEL GUICHARD', 'Spectacles Rodez', '43,00 €', 'Non', '20%')
 let prod3 = new Product('PC Portable Gaming MSI GL75 Leopard 10SFK- 457FR 17,3" Intel Core i7 16 Go RAM 256 Go SSD + 1 To SATA Noir', 'Ordinateurs portables', '1999,99 €', 'Oui', '20%')
-let prod4 = new Product('PC Portable Gaming Asus TUF505DV- HN232T 15.6" AMD Ryzen 7 16 Go RAM 512 Go SSD Noir','Ordinateurs portables', '1499,99 €', 'Oui', '33%')
+let prod4 = new Product('PC Portable Gaming Asus TUF505DV- HN232T 15.6" AMD Ryzen 7 16 Go RAM 512 Go SSD Noir', 'Ordinateurs portables', '1499,99 €', 'Oui', '33%')
 let prod5 = new Product('PC Portable Gaming Acer Predator Triton 700 PT715-51- 76D4 15.6" Gaming Intel Core i7 32 Go RAM 256 Go SSD + 256 Go SATA Noir', 'Ordinateurs portables', '3499,99 €', 'Non', 'Non')
+let prod6 = new Product('Produit 6', 'Spectacles Rodez', '40,00 €', 'Non', '70%')
 
 // Déclaration des catégories
-let cat1 = new Category(prod1)
-let cat2 = new Category(prod3)
+let cat1 = new Category('Spectacles Rodez')
+let cat2 = new Category('Ordinateurs portables')
 
 // Création du tableau de produits
-let tabProduit = [prod1, prod2, prod3, prod4, prod5]
-
-// Je trie les éléments du tableau par ordre alphabétique
-tabProduit.sort((a, b) => a.name.localeCompare(b.name))
-
-// tabProduit.sort((a, b) => a.name.localeCompare(b.name))
+let tabProduit = [prod1, prod2, prod3, prod4, prod5, prod6]
 
 // Association du tableau à l'élément du DOM
 let listeProduit = document.querySelector('#produit')
+
+// Je trie les éléments du tableau par ordre alphabétique
+// tabProduit.sort((a, b) => a.name.localeCompare(b.name))
 
 // Je crée une variable comprenant tous les produits
 let tousProduit = ''
@@ -46,7 +45,7 @@ checkboxPromo.addEventListener('click', function () {
 // La fonction ajoute uniquement les produits en promotion dans la variable "listeProduit" puis les affiche grâce à innerHTML
 function affichePromo(product) {
     if (product.promotion !== 'Non') {
-        listeProduit.innerHTML += '<tr><td>' + product.name + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>'
+        listeProduit.innerHTML += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>'
     }
 }
 // FIN DE LA PARTIE CHECKBOX PROMOTION
@@ -56,13 +55,11 @@ function affichePromo(product) {
 
 
 // PARTIE CHECKBOX REMISE
-// Je reproduis la même chose que pour la promotion en changeant les noms
 let checkboxRemise = document.querySelector('#checkboxRem')
 
 checkboxRemise.addEventListener('click', function () {
     if (checkboxRemise.checked) {
         listeProduit.innerHTML = ''
-
         tabProduit.forEach(produit => afficheRemise(produit))
     }
     else {
@@ -72,7 +69,28 @@ checkboxRemise.addEventListener('click', function () {
 
 function afficheRemise(product) {
     if (product.discount !== 'Non') {
-        listeProduit.innerHTML += '<tr><td>' + product.name + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>'
+        listeProduit.innerHTML += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>'
     }
 }
 // FIN DE LA PARTIE CHECKBOX REMISE
+
+
+
+
+
+// PARTIE TRI CATEGORIE PAR ORDRE ALPHATBETIQUE
+let checkboxCategory = document.querySelector('#checkboxCat')
+
+checkboxCategory.addEventListener('click', function () {
+    if (checkboxCategory.checked) {
+        listeProduit.innerHTML = ''
+        tousProduit = ''
+        tabProduit.sort((a, b) => a.category.localeCompare(b.category))
+        tabProduit.forEach(product => tousProduit += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>')
+        listeProduit.innerHTML = tousProduit
+    }
+    else {
+        listeProduit.innerHTML = tousProduit
+    }
+})
+// FIN DE LA PARTIE TRI CATEGORIE PAR ORDRE ALPHATBETIQUE
