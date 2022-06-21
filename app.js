@@ -1,51 +1,51 @@
 // Déclaration des produits
-let prod1 = new Product('MICHAËL GREGORIO', 'Spectacles Rodez', '43,00 €', 'Non', 'Non')
-let prod2 = new Product('DANIEL GUICHARD', 'Spectacles Rodez', '43,00 €', 'Non', '20%')
-let prod3 = new Product('PC Portable Gaming MSI GL75 Leopard 10SFK- 457FR 17,3" Intel Core i7 16 Go RAM 256 Go SSD + 1 To SATA Noir', 'Ordinateurs portables', '1999,99 €', 'Oui', '20%')
-let prod4 = new Product('PC Portable Gaming Asus TUF505DV- HN232T 15.6" AMD Ryzen 7 16 Go RAM 512 Go SSD Noir', 'Ordinateurs portables', '1499,99 €', 'Oui', '33%')
-let prod5 = new Product('PC Portable Gaming Acer Predator Triton 700 PT715-51- 76D4 15.6" Gaming Intel Core i7 32 Go RAM 256 Go SSD + 256 Go SATA Noir', 'Ordinateurs portables', '3499,99 €', 'Non', 'Non')
-let prod6 = new Product('Produit 6', 'Spectacles Rodez', '40,00 €', 'Non', '70%')
+let product1 = new Product('MICHAËL GREGORIO', 'Spectacles Rodez', '43,00 €', 'Non', 'Non')
+let product2 = new Product('DANIEL GUICHARD', 'Spectacles Rodez', '43,00 €', 'Non', '20%')
+let product3 = new Product('PC Portable Gaming MSI GL75 Leopard 10SFK- 457FR 17,3" Intel Core i7 16 Go RAM 256 Go SSD + 1 To SATA Noir', 'Ordinateurs portables', '1999,99 €', 'Oui', '20%')
+let product4 = new Product('PC Portable Gaming Asus TUF505DV- HN232T 15.6" AMD Ryzen 7 16 Go RAM 512 Go SSD Noir', 'Ordinateurs portables', '1499,99 €', 'Oui', '33%')
+let product5 = new Product('PC Portable Gaming Acer Predator Triton 700 PT715-51- 76D4 15.6" Gaming Intel Core i7 32 Go RAM 256 Go SSD + 256 Go SATA Noir', 'Ordinateurs portables', '3499,99 €', 'Non', 'Non')
+let productTest = new Product('Produit test', 'Spectacles Rodez', '40,00 €', 'Non', '70%')
 
 // Déclaration des catégories
-let cat1 = new Category('Spectacles Rodez')
-let cat2 = new Category('Ordinateurs portables')
+let category1 = new Category('Spectacles Rodez')
+let category2 = new Category('Ordinateurs portables')
 
 // Création du tableau de produits
-let tabProduit = [prod1, prod2, prod3, prod4, prod5, prod6]
+let tableProduct = [product1, product2, product3, product4, product5, productTest]
 
 // Association du tableau à l'élément du DOM
-let listeProduit = document.querySelector('#produit')
+let listProduct = document.querySelector('#prod')
 
 // Je trie les éléments du tableau par ordre alphabétique
 // tabProduit.sort((a, b) => a.name.localeCompare(b.name))
 
 // Je crée une variable comprenant tous les produits
-let tousProduit = ''
-tabProduit.forEach(product => tousProduit += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>')
-listeProduit.innerHTML = tousProduit
+let allProduct = ''
+tableProduct.forEach(product => allProduct += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>')
+listProduct.innerHTML = allProduct
 
 
 
 
 
 // PARTIE CHECKBOX PROMOTION
-let checkboxPromo = document.querySelector('#checkboxProm')
+let checkboxPromotion = document.querySelector('#checkboxProm')
 // Je crée un listener sur lequel un clic active la fonction 
-checkboxPromo.addEventListener('click', function () {
-    if (checkboxPromo.checked) {
-        listeProduit.innerHTML = ''
+checkboxPromotion.addEventListener('click', function () {
+    if (checkboxPromotion.checked) {
+        listProduct.innerHTML = ''
         // Boucle d'affichage des produits en promotion à partir du tableau "tabProduit"
-        tabProduit.forEach(produit => affichePromo(produit))
+        tableProduct.forEach(produit => showPromotion(produit))
     }
     else {
-        listeProduit.innerHTML = tousProduit
+        listProduct.innerHTML = allProduct
     }
 })
 
 // La fonction ajoute uniquement les produits en promotion dans la variable "listeProduit" puis les affiche grâce à innerHTML
-function affichePromo(product) {
+function showPromotion(product) {
     if (product.promotion !== 'Non') {
-        listeProduit.innerHTML += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>'
+        listProduct.innerHTML += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>'
     }
 }
 // FIN DE LA PARTIE CHECKBOX PROMOTION
@@ -55,21 +55,21 @@ function affichePromo(product) {
 
 
 // PARTIE CHECKBOX REMISE
-let checkboxRemise = document.querySelector('#checkboxRem')
+let checkboxDiscount = document.querySelector('#checkboxDisc')
 
-checkboxRemise.addEventListener('click', function () {
-    if (checkboxRemise.checked) {
-        listeProduit.innerHTML = ''
-        tabProduit.forEach(produit => afficheRemise(produit))
+checkboxDiscount.addEventListener('click', function () {
+    if (checkboxDiscount.checked) {
+        listProduct.innerHTML = ''
+        tableProduct.forEach(produit => showDiscount(produit))
     }
     else {
-        listeProduit.innerHTML = tousProduit
+        listProduct.innerHTML = allProduct
     }
 })
 
-function afficheRemise(product) {
+function showDiscount(product) {
     if (product.discount !== 'Non') {
-        listeProduit.innerHTML += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>'
+        listProduct.innerHTML += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>'
     }
 }
 // FIN DE LA PARTIE CHECKBOX REMISE
@@ -83,14 +83,14 @@ let checkboxCategory = document.querySelector('#checkboxCat')
 
 checkboxCategory.addEventListener('click', function () {
     if (checkboxCategory.checked) {
-        listeProduit.innerHTML = ''
-        tousProduit = ''
-        tabProduit.sort((a, b) => a.category.localeCompare(b.category))
-        tabProduit.forEach(product => tousProduit += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>')
-        listeProduit.innerHTML = tousProduit
+        listProduct.innerHTML = ''
+        allProduct = ''
+        tableProduct.sort((a, b) => a.category.localeCompare(b.category))
+        tableProduct.forEach(product => allProduct += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>')
+        listProduct.innerHTML = allProduct
     }
     else {
-        listeProduit.innerHTML = tousProduit
+        listProduct.innerHTML = allProduct
     }
 })
 // FIN DE LA PARTIE TRI CATEGORIE PAR ORDRE ALPHATBETIQUE
