@@ -18,7 +18,7 @@ let tableProducts = [product1, product2, product3, product4, product5]
 let elementProducts = document.querySelector('#prod')
 // Je crée une variable avec le tableau d'origine tel que présenté sur l'énoncé
 let allProducts = ''
-// Je crée une variable qui trie le tableau
+// Je crée une variable qui triera le tableau
 let sortProducts = 0
 
 // Affichage du tableau
@@ -32,7 +32,7 @@ checkboxPromotion.addEventListener('click', function () {
     if (checkboxPromotion.checked) {
         // Je vide le tableau
         elementProducts.innerHTML = ''
-        // Boucle d'affichage des produits en promotion à partir du tableau "tabProduit"
+        // Boucle d'affichage des produits en promotion à partir du tableau "tableProduct"
         tableProducts.forEach(product => showPromotion(product))
     }
     else {
@@ -40,7 +40,7 @@ checkboxPromotion.addEventListener('click', function () {
     }
 })
 
-// La fonction ajoute uniquement les produits en promotion dans la variable "listeProduit" puis les affiche grâce à innerHTML
+// La fonction ajoute uniquement les produits en promotion dans la variable "elementProducts" puis les affiche grâce à innerHTML
 function showPromotion(product) {
     if (product.promotion !== 'Non') {
         elementProducts.innerHTML += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>'
@@ -70,6 +70,7 @@ function showDiscount(product) {
 checkboxName.addEventListener('click', function () {
     if (checkboxName.checked) {
         elementProducts.innerHTML = ''
+        // Je remets à zéro la variable "sortProducts" qui contient mes éléments triés pour éviter le problème d'accumulation lorsque l'on décoche/recoche
         sortProducts = ''
         // Je trie les éléments du tableau par ordre alphabétique
         tableProducts.sort((a, b) => a.name.localeCompare(b.name))
