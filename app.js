@@ -98,6 +98,7 @@ checkboxCategory.addEventListener('click', function () {
 })
 // FIN TRI PAR CATEGORIE
 
+// DEFINIR SOI-MEME UNE PROMOTION OU UNE REMISE
 
 
 
@@ -105,9 +106,5 @@ checkboxCategory.addEventListener('click', function () {
 
 
 
-// function tabFilter(tabName, property){
-//     tabName.sort((a, b) => a[property].localeCompare(b[property]))
-// }
 
-// tabFilter(tableProducts, category)
-// console.log(tabFilter(tableProducts, category));
+// FIN DEFINIR SOI-MEME UNE PROMOTION OU UNE REMISE
