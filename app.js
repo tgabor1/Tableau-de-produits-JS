@@ -101,7 +101,4 @@ checkboxCategory.addEventListener('click', function () {
 
 // DEFINIR SOI-MEME UNE PROMOTION OU UNE REMISE
 
-
-
 // FIN DEFINIR SOI-MEME UNE PROMOTION OU UNE REMISE
-
