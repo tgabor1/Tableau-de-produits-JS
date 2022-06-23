@@ -1,3 +1,4 @@
+
 // Déclaration des produits
 let product1 = new Product('MICHAËL GREGORIO', 'Spectacles Rodez', '43,00 €', 'Non', 'Non')
 let product2 = new Product('DANIEL GUICHARD', 'Spectacles Rodez', '43,00 €', 'Non', '20%')
@@ -102,9 +103,5 @@ checkboxCategory.addEventListener('click', function () {
 
 
 
-
-
-
-
-
 // FIN DEFINIR SOI-MEME UNE PROMOTION OU UNE REMISE
+
