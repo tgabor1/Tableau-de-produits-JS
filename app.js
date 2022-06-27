@@ -20,6 +20,10 @@ let elementProducts = document.querySelector('#prod')
 let originalProducts = ''
 // Je crée une variable qui contiendra le tableau trié
 let sortProducts = ''
+// Je crée des variables liés aux boutons qui ouvriront les popups permettant de modifier les promotions ou remises
+let buttonPromotion = document.querySelector('#modifyPromotion')
+let buttonDiscount = document.querySelector('#modifyDiscount')
+
 
 // Affichage du tableau
 tableProducts.forEach(product => originalProducts += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>')
@@ -98,13 +102,14 @@ checkboxCategory.addEventListener('click', function () {
 })
 // FIN TRI PAR CATEGORIE
 
-// DEFINIR SOI-MEME UNE PROMOTION OU UNE REMISE
+// MODIFIER UNE PROMOTION
+buttonPromotion.addEventListener('click', function ()){
 
+}
+// FIN MODIFIER UNE PROMOTION
 
+// MODIFIER UNE REMISE
+buttonDiscount.addEventListener('click', function ()){
 
-
-
-
-
-
-// FIN DEFINIR SOI-MEME UNE PROMOTION OU UNE REMISE
+}
+// FIN MODIFIER UNE REMISE
