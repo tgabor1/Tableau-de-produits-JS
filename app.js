@@ -12,13 +12,13 @@ let elementProducts = document.querySelector('#products')
 // Déclaration des catégories
 let category1 = new Category('Spectacles Rodez')
 let category2 = new Category('Ordinateurs portables')
+// Je crée une variable qui contiendra le tableau d'origine tel que présenté sur l'énoncé
+let originalProducts = ''
 // Déclaration des checkbox
 let checkboxPromotion = document.querySelector('#checkboxPromotion')
 let checkboxDiscount = document.querySelector('#checkboxDiscount')
 let checkboxName = document.querySelector('#checkboxName')
 let checkboxCategory = document.querySelector('#checkboxCategory')
-// Je crée une variable qui contiendra le tableau d'origine tel que présenté sur l'énoncé
-let originalProducts = ''
 // Je crée une variable qui contiendra le tableau trié
 let sortProducts = ''
 // Je crée des variables liés aux boutons qui ouvriront les popups permettant de modifier les promotions ou remises
