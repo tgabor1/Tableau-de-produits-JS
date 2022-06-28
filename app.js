@@ -21,10 +21,9 @@ let checkboxName = document.querySelector('#checkboxName')
 let checkboxCategory = document.querySelector('#checkboxCategory')
 // Je crée une variable qui contiendra le tableau trié
 let sortProducts = ''
-// Je crée des variables liés aux boutons qui ouvriront les popups permettant de modifier les promotions ou remises
-let buttonDiscount = document.querySelector('#buttonDiscount')
-// Je crée des variables liées au select et à l'input de mon HTML
-let modifyPromotion = document.querySelector('#modify')
+// Je crée une variable lié au bouton "Modifier" qui validera les changements
+let buttonModify = document.querySelector('#modify')
+
 let indexModify = 0;
 
 // Affichage du tableau
@@ -116,7 +115,7 @@ function showDiscountPromotion(index) {
     }
 }
 
-modifyPromotion.addEventListener('click', function () {
+buttonModify.addEventListener('click', function () {
     if (document.querySelector('#promotion').checked == true) {
         document.querySelector('#cellPromotion' + indexModify).innerHTML = "Oui"
         tableProducts[indexModify].promotion = "Oui"
