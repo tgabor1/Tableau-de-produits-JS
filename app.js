@@ -1,3 +1,4 @@
+
 // Déclaration des produits
 let product1 = new Product('MICHAËL GREGORIO', 'Spectacles Rodez', '43,00 €', 'Non', 'Non')
 let product2 = new Product('DANIEL GUICHARD', 'Spectacles Rodez', '43,00 €', 'Non', '20%')
@@ -8,26 +9,30 @@ let product5 = new Product('PC Portable Gaming Acer Predator Triton 700 PT715-51
 let category1 = new Category('Spectacles Rodez')
 let category2 = new Category('Ordinateurs portables')
 // Déclaration des checkbox
-let checkboxPromotion = document.querySelector('#checkboxProm')
-let checkboxDiscount = document.querySelector('#checkboxDisc')
-let checkboxName = document.querySelector('#checkboxNam')
-let checkboxCategory = document.querySelector('#checkboxCat')
+let checkboxPromotion = document.querySelector('#checkboxPromotion')
+let checkboxDiscount = document.querySelector('#checkboxDiscount')
+let checkboxName = document.querySelector('#checkboxName')
+let checkboxCategory = document.querySelector('#checkboxCategory')
 // Création du tableau de produits
 let tableProducts = [product1, product2, product3, product4, product5]
 // Association du tableau à l'élément du DOM, ce qui correspond à ce qu'il y aura d'affiché dans le tableau
-let elementProducts = document.querySelector('#prod')
+let elementProducts = document.querySelector('#products')
 // Je crée une variable qui contiendra le tableau d'origine tel que présenté sur l'énoncé
 let originalProducts = ''
 // Je crée une variable qui contiendra le tableau trié
 let sortProducts = ''
 // Je crée des variables liés aux boutons qui ouvriront les popups permettant de modifier les promotions ou remises
-let buttonPromotion = document.querySelector('#modifyPromotion')
-let buttonDiscount = document.querySelector('#modifyDiscount')
+let buttonDiscount = document.querySelector('#buttonDiscount')
+// Je crée des variables liées au select et à l'input de mon HTML
+let modifyPromotion = document.querySelector('#modify')
+let indexModify = 0;
 
 
 // Affichage du tableau
-tableProducts.forEach(product => originalProducts += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>')
+let index = 0;
+tableProducts.forEach(product => { originalProducts += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td id="cellPromotion' + index + '">' + product.promotion + '</td><td id="cellPercent' + index + '">' + product.discount + '</td><td><button id="buttonPromotion' + index + '" onclick="showDiscountPromotion(' + index + ')">Modifier une promotion</button></td></tr>'; index++; })
 elementProducts.innerHTML = originalProducts
+
 
 // CHECKBOX PROMOTION
 // Je crée un listener sur lequel un clic active la fonction 
@@ -52,6 +57,7 @@ function showPromotion(product) {
 }
 // FIN CHECKBOX PROMOTION
 
+
 // CHECKBOX REMISE
 checkboxDiscount.addEventListener('click', function () {
     if (checkboxDiscount.checked) {
@@ -70,6 +76,7 @@ function showDiscount(product) {
 }
 // FIN CHECKBOX REMISE
 
+
 // TRI PAR ORDRE ALPHABETIQUE
 checkboxName.addEventListener('click', function () {
     if (checkboxName.checked) {
@@ -87,6 +94,7 @@ checkboxName.addEventListener('click', function () {
 })
 // FIN TRI PAR ORDRE ALPHABETIQUE
 
+
 // TRI PAR CATEGORIE
 checkboxCategory.addEventListener('click', function () {
     if (checkboxCategory.checked) {
@@ -102,14 +110,37 @@ checkboxCategory.addEventListener('click', function () {
 })
 // FIN TRI PAR CATEGORIE
 
-// MODIFIER UNE PROMOTION
-buttonPromotion.addEventListener('click', function ()){
 
+// MODIFIER UNE REMISE OU UNE PROMOTION
+function showDiscountPromotion(index) {
+    indexModify = index
+    if (document.querySelector('#cellPromotion' + index).innerHTML == "Non") {
+        document.querySelector('#promotion').checked = false
+    } else {
+        document.querySelector('#promotion').checked = true
+    }
+    if (document.querySelector('#cellPercent' + index).innerHTML == "Non") {
+        document.querySelector('#percent').value = "0"
+    } else {
+        document.querySelector('#percent').value = document.querySelector('#cellPercent' + index).innerHTML.replace('%', '')
+    }
 }
-// FIN MODIFIER UNE PROMOTION
 
-// MODIFIER UNE REMISE
-buttonDiscount.addEventListener('click', function ()){
+modifyPromotion.addEventListener('click', function () {
+    if (document.querySelector('#promotion').checked == true) {
+        document.querySelector('#cellPromotion' + indexModify).innerHTML = "Oui"
+        tableProducts[indexModify].promotion = "Oui"
+    } else {
+        document.querySelector('#cellPromotion' + indexModify).innerHTML = "Non"
+        tableProducts[indexModify].promotion = "Non"
+    }
 
-}
-// FIN MODIFIER UNE REMISE
+    if (document.querySelector('#percent').value == "0") {
+        document.querySelector('#cellPercent' + indexModify).innerHTML = "Non"
+        tableProducts[indexModify].discount = "Non"
+    } else {
+        document.querySelector('#cellPercent' + indexModify).innerHTML = document.querySelector('#percent').value + '%'
+        tableProducts[indexModify].discount = document.querySelector('#percent').value + '%'
+    }
+});
+// FIN MODIFIER UNE REMISE OU UNE PROMOTION

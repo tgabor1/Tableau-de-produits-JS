@@ -19,27 +19,25 @@
                 <th>Remise</th>
             </tr>
         </thead>
-        <tbody id="prod">
+        <tbody id="products">
             <!-- On affiche les produits ici -->
         </tbody>
     </table><br>
+    <p>Afficher par :</p>
     <label for="">Promotion</label>
-    <input type="checkbox" id="checkboxProm">
+    <input type="checkbox" id="checkboxPromotion">
     <label for="">Remise</label>
-    <input type="checkbox" id="checkboxDisc">
+    <input type="checkbox" id="checkboxDiscount">
     <label for="">Tri par ordre alphabétique</label>
-    <input type="checkbox" id="checkboxNam">
+    <input type="checkbox" id="checkboxName">
     <label for="">Tri par catégorie</label>
-    <input type="checkbox" id="checkboxCat">
-    <button>Modifier une promotion</button>
-    <select hidden id="modifyPromotion">
-        <option value="Oui">Oui</option>
-        <option value="Non">Non</option>
-    </select>
-    <button>Modifier une remise</button>
-    <input hidden type="number" id="modifyDiscount">
+    <input type="checkbox" id="checkboxCategory"><br><br>
+
+    <input type="checkbox" id="promotion" value="Non"> Promotion
+    <input type="number" id="percent"> Pourcentage
+    <button id="modify">Modifier</button>
+    
     <script src="class.js"></script>
     <script src="app.js"></script>
 </body>
-
 </html>
