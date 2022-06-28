@@ -27,12 +27,10 @@ let buttonDiscount = document.querySelector('#buttonDiscount')
 let modifyPromotion = document.querySelector('#modify')
 let indexModify = 0;
 
-
 // Affichage du tableau
 let index = 0;
 tableProducts.forEach(product => { originalProducts += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td id="cellPromotion' + index + '">' + product.promotion + '</td><td id="cellPercent' + index + '">' + product.discount + '</td><td><button id="buttonPromotion' + index + '" onclick="showDiscountPromotion(' + index + ')">Modifier une promotion</button></td></tr>'; index++; })
 elementProducts.innerHTML = originalProducts
-
 
 // CHECKBOX PROMOTION
 // Je crée un listener sur lequel un clic active la fonction 
@@ -55,8 +53,6 @@ function showPromotion(product) {
         elementProducts.innerHTML += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>'
     }
 }
-// FIN CHECKBOX PROMOTION
-
 
 // CHECKBOX REMISE
 checkboxDiscount.addEventListener('click', function () {
@@ -74,8 +70,6 @@ function showDiscount(product) {
         elementProducts.innerHTML += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td>' + product.promotion + '</td><td>' + product.discount + '</td></tr>'
     }
 }
-// FIN CHECKBOX REMISE
-
 
 // TRI PAR ORDRE ALPHABETIQUE
 checkboxName.addEventListener('click', function () {
@@ -92,8 +86,6 @@ checkboxName.addEventListener('click', function () {
         elementProducts.innerHTML = originalProducts
     }
 })
-// FIN TRI PAR ORDRE ALPHABETIQUE
-
 
 // TRI PAR CATEGORIE
 checkboxCategory.addEventListener('click', function () {
@@ -108,8 +100,6 @@ checkboxCategory.addEventListener('click', function () {
         elementProducts.innerHTML = originalProducts
     }
 })
-// FIN TRI PAR CATEGORIE
-
 
 // MODIFIER UNE REMISE OU UNE PROMOTION
 function showDiscountPromotion(index) {
@@ -142,5 +132,4 @@ modifyPromotion.addEventListener('click', function () {
         document.querySelector('#cellPercent' + indexModify).innerHTML = document.querySelector('#percent').value + '%'
         tableProducts[indexModify].discount = document.querySelector('#percent').value + '%'
     }
-});
-// FIN MODIFIER UNE REMISE OU UNE PROMOTION
+})
