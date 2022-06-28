@@ -7,6 +7,8 @@ let product4 = new Product('PC Portable Gaming Asus TUF505DV- HN232T 15.6" AMD R
 let product5 = new Product('PC Portable Gaming Acer Predator Triton 700 PT715-51- 76D4 15.6" Gaming Intel Core i7 32 Go RAM 256 Go SSD + 256 Go SATA Noir', 'Ordinateurs portables', '3499,99 €', 'Non', 'Non')
 // Création du tableau de produits
 let tableProducts = [product1, product2, product3, product4, product5]
+// Association du tableau à l'élément du DOM, ce qui correspond à ce qu'il y aura d'affiché dans le tableau
+let elementProducts = document.querySelector('#products')
 // Déclaration des catégories
 let category1 = new Category('Spectacles Rodez')
 let category2 = new Category('Ordinateurs portables')
@@ -15,8 +17,6 @@ let checkboxPromotion = document.querySelector('#checkboxPromotion')
 let checkboxDiscount = document.querySelector('#checkboxDiscount')
 let checkboxName = document.querySelector('#checkboxName')
 let checkboxCategory = document.querySelector('#checkboxCategory')
-// Association du tableau à l'élément du DOM, ce qui correspond à ce qu'il y aura d'affiché dans le tableau
-let elementProducts = document.querySelector('#products')
 // Je crée une variable qui contiendra le tableau d'origine tel que présenté sur l'énoncé
 let originalProducts = ''
 // Je crée une variable qui contiendra le tableau trié
