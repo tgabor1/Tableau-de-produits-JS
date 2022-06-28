@@ -8,11 +8,13 @@ class Product {
     }
 }
 
+
 class Category {
     constructor(Product) {
         this.name = Product.category
     }
 }
+
 
 // class Category {
 //     constructor(name) {
