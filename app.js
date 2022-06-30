@@ -25,6 +25,7 @@ let buttonModify = document.querySelector('#modify')
 
 let indexModify = 0;
 
+
 // Affichage du tableau
 let index = 0;
 tableProducts.forEach(product => { originalProducts += '<tr><td>' + product.name + '</td><td>' + product.category + '</td><td>' + product.price + '</td><td id="cellPromotion' + index + '">' + product.promotion + '</td><td id="cellPercent' + index + '">' + product.discount + '</td><td><button id="buttonPromotion' + index + '" onclick="showDiscountPromotion(' + index + ')">Modifier une promotion</button></td></tr>'; index++; })
